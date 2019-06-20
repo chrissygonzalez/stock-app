@@ -1,1 +1,13 @@
 <h1>Sign In</h1>
+
+<%= form_for(:user, url: signin_path) do |f| %>
+<%=     label_tag "Name", nil, class: "label" %>
+<%=     text_field_tag "user_name", nil, class: "width-60" %><br>
+
+<%=     label_tag "Password", nil, class: "label" %>
+<%=     password_field_tag 'password', nil, class: "width-60" %>
+<%=     f.label :password_confirmation, class: "label" %>
+<%=     f.password_field :password_confirmation, class: "width-60" %>
+<br>
+<%=     f.submit 'Sign In' %>
+<% end %>
