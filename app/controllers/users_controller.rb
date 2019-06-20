@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         # binding.pry
         @user = User.create(user_params)
         signin(@user)
-        redirect_to user_path(@user.id)
+        redirect_to user_transactions_path(@user.id)
     end
 
     def show

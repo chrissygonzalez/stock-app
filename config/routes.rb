@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   post   '/signin',   to: 'sessions#create'
   match  '/logout',   to: 'sessions#destroy', via: :delete
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create] do
+    resources :transactions, only: [:new, :create, :index]
+    resources :stocks, only: [:show]
+  end
+
+  # resources :users, only: [:new, :create, :show]
 end
