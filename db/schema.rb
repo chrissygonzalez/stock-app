@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_203747) do
+ActiveRecord::Schema.define(version: 2019_06_20_235518) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "symbol"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_203747) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "balance"
+    t.decimal "balance", precision: 10, scale: 2
   end
 
 end

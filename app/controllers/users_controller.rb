@@ -6,8 +6,10 @@ class UsersController < ApplicationController
     def create
         # binding.pry
         @user = User.create(user_params)
+        @user.balance = 5000.00
+        @user.save
         signin(@user)
-        redirect_to user_transactions_path(@user.id)
+        redirect_to user_stocks_path(@user.id)
     end
 
     def show
