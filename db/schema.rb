@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_235518) do
+ActiveRecord::Schema.define(version: 2019_06_23_131854) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "symbol"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_06_20_235518) do
     t.integer "quantity"
     t.integer "user_id"
     t.integer "stock_id"
+    t.decimal "purchase_price", precision: 10, scale: 2
+    t.date "purchase_date"
   end
 
   create_table "users", force: :cascade do |t|

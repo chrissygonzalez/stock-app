@@ -1,16 +1,26 @@
 <h1><%= @user.name %>'s Transactions</h1>
 
 <% if @transactions.size > 0 %>
-<% @transactions.each do|txn| %>
-<!-- NEED TO FILTER THESE FOR THE CURRENT USER -->
 <table>
     <tr>
-    <td><%= Stock.find(txn.stock_id).symbol %>
-    <td><%= txn.quantity %></td>
+        <th>Date</th>
+        <th>Ticker</th>
+        <th>Quantity</th>
+        <th>Purchase Price</th>
+        <th>Total</th>
     </tr>
+    <% @transactions.each do|txn| %>
+    <!-- NEED TO FILTER THESE FOR THE CURRENT USER -->
+        <tr>
+            <td><%= txn.purchase_date %></td>
+            <td><%= Stock.find(txn.stock_id).symbol %>
+            <td><%= txn.quantity %></td>
+            <td><%= txn.purchase_price %></td>
+            <td><%= txn.quantity * txn.purchase_price %></td>
+        </tr>
+    <% end %>
 </table>
-<% end %>
-<p>So many transactions</p>
+
 <% else %>
-<p>No transactions yet</p>
+    <p>No transactions yet</p>
 <% end %>
