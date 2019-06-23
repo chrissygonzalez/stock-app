@@ -13,7 +13,9 @@ class StocksController < ApplicationController
     end
 
     def create
+        # binding.pry
         @stock.create(stock_params)
+
         # TODO: get price for stock now
         # check for existing stock and update price?
     end
@@ -21,6 +23,6 @@ class StocksController < ApplicationController
     private
 
     def stock_params
-        params.require(:stocl).permit(:symbol)
+        params.require(:stock).permit(:symbol)
     end
 end

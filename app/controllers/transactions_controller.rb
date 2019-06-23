@@ -5,9 +5,13 @@ class TransactionsController < ApplicationController
     end
 
     def create
+
+        client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
+        price = client.price(params[:transaction][:stock_attributes][:symbol])
+
         @transaction = Transaction.create(transaction_params)
-        # TODO: send to same page with updated list of stocks
-        # add date to transaction table and then get date here
+        redirect_to user_transactions_path(current_user.id)
+
     end
 
     private
