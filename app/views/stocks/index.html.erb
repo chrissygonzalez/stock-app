@@ -2,10 +2,20 @@
 <h3>Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
 
 <% if @stocks.size > 0 %>
-    <% @stocks.each do |stock| %>
-    <%=     stock.symbol %>
-    <%= %>
+<table>
+<tr>
+<th>Ticker</th>
+<th>Quantity</th>
+<th>Current Value</th>
+</tr>
+    <% @stock_quantities.each do |k, v| %>
+    <tr>
+    <td><%= k %></td>
+    <td><%= v[0] %> shares</td>
+    <td><%= "%.2f" % (v[1] * v[0]) %> </td>
+    </tr>
     <% end %>
+    </table>
 <% else %>
 <p>No stocks yet</p>
 <% end %>

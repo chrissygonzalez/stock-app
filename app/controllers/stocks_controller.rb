@@ -6,16 +6,22 @@ class StocksController < ApplicationController
     def index
         @user = current_user
         @stocks = User.find(current_user.id).stocks.uniq ||= nil
-        # binding.pry
+        @stock_quantities = Hash.new
+        client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
+
+        @stocks.each do |stock|
+            quantity = 0
+            @user.transactions.where(stock_id: stock.id).each do |txn|
+                quantity = quantity + txn.quantity
+            end
+            @stock_quantities[stock.symbol] = [quantity, client.price(stock.symbol)]
+        end
 
         @transaction = Transaction.new(user_id: current_user.id)
         @transaction.build_stock
     end
 
     def create
-        # binding.pry
-        # @stock.create(stock_params)
-        # check for existing stock and update price
     end
 
     private
