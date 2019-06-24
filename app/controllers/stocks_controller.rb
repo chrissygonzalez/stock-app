@@ -5,8 +5,8 @@ class StocksController < ApplicationController
 
     def index
         @user = current_user
-        @stocks = User.find(current_user.id).stocks ||= nil
-        # TODO: list stocks, quantities, and prices
+        @stocks = User.find(current_user.id).stocks.uniq ||= nil
+        # binding.pry
 
         @transaction = Transaction.new(user_id: current_user.id)
         @transaction.build_stock
@@ -14,10 +14,8 @@ class StocksController < ApplicationController
 
     def create
         # binding.pry
-        @stock.create(stock_params)
-
-        # TODO: get price for stock now
-        # check for existing stock and update price?
+        # @stock.create(stock_params)
+        # check for existing stock and update price
     end
 
     private

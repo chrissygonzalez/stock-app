@@ -9,12 +9,11 @@ class TransactionsController < ApplicationController
         price = client.price(params[:transaction][:stock_attributes][:symbol])
 
         @transaction = Transaction.create(transaction_params)
-        @transaction.purchase_price = price
+        @transaction.purchase_price = price * params[:transaction][:quantity].to_i
         @transaction.purchase_date = DateTime.now
         @transaction.save
 
         redirect_to user_transactions_path(current_user.id)
-
     end
 
     private

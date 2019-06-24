@@ -2,7 +2,10 @@
 <h3>Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
 
 <% if @stocks.size > 0 %>
-<p>So many stocks</p>
+    <% @stocks.each do |stock| %>
+    <%=     stock.symbol %>
+    <%= %>
+    <% end %>
 <% else %>
 <p>No stocks yet</p>
 <% end %>

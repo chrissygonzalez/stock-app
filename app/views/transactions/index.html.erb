@@ -6,7 +6,7 @@
         <th>Date</th>
         <th>Ticker</th>
         <th>Quantity</th>
-        <th>Purchase Price</th>
+        <th>Price</th>
         <th>Total</th>
     </tr>
     <% @transactions.each do|txn| %>
@@ -14,7 +14,7 @@
         <tr>
             <td><%= txn.purchase_date %></td>
             <td><%= Stock.find(txn.stock_id).symbol %>
-            <td><%= txn.quantity %></td>
+            <td><%= txn.quantity %> shares</td>
             <td><%= txn.purchase_price %></td>
             <td><%= txn.quantity * txn.purchase_price %></td>
         </tr>
