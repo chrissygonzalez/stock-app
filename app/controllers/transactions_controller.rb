@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
 
     def create
         # TODO: validate quantity for whole numbers
-
+        # display dollar signs and USD
         @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])

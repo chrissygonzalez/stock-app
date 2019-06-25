@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     def show_error
         # binding.pry
-        flash[:notice] = "Symbol OMG Not Found"
+        flash[:notice] = "Symbol Not Found"
         redirect_to user_stocks_path(current_user.id)
     end
 end
