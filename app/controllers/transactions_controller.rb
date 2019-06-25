@@ -6,22 +6,23 @@ class TransactionsController < ApplicationController
 
     def create
         # TODO: validate quantity for whole numbers
-        #  check total against balance, only allow if enough money
-        #  validate for ticker symbol existing
+
+        @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
-        # if IEX::Errors::SymbolNotFoundError
-        #     binding.pry
-        #     flash[:notice] = "Symbol OMG Not Found"
-        #     redirect_to user_stocks_path(current_user.id)
-        # end
-        price = client.price(params[:transaction][:stock_attributes][:symbol])
+        stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
+        purchase_price = stock_price * params[:transaction][:quantity].to_i
 
-        @transaction = Transaction.create(transaction_params)
-        @transaction.purchase_price = price * params[:transaction][:quantity].to_i
-        @transaction.purchase_date = DateTime.now
-        @transaction.save
-
-        redirect_to user_transactions_path(current_user.id)
+        if @user.balance > purchase_price
+            @transaction = Transaction.create(transaction_params)
+            @transaction.purchase_price = purchase_price
+            @transaction.purchase_date = DateTime.now
+            @transaction.save
+            @user.deduct_from_balance(purchase_price)
+            redirect_to user_stocks_path(current_user.id)
+        else
+            flash[:notice] = "Not enough money. This transaction will cost #{purchase_price - @user.balance} more than you have."
+            redirect_to user_stocks_path(current_user.id)
+        end
     end
 
     private
