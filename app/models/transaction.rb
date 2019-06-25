@@ -4,6 +4,8 @@ class Transaction < ActiveRecord::Base
 
     accepts_nested_attributes_for :stock
 
+    validates :quantity, numericality: { only_integer: true }
+
     def stock_attributes=(stock)
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
 

@@ -5,8 +5,7 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        # TODO: validate quantity for whole numbers
-        # display dollar signs and USD
+        # TODO: display dollar signs and USD
         @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
@@ -14,11 +13,17 @@ class TransactionsController < ApplicationController
 
         if @user.balance > purchase_price
             @transaction = Transaction.create(transaction_params)
-            @transaction.purchase_price = purchase_price
-            @transaction.purchase_date = DateTime.now
-            @transaction.save
-            @user.deduct_from_balance(purchase_price)
-            redirect_to user_stocks_path(current_user.id)
+            if @transaction.valid?
+                
+                @transaction.purchase_price = purchase_price
+                @transaction.purchase_date = DateTime.now
+                @transaction.save
+                @user.deduct_from_balance(purchase_price)
+                redirect_to user_stocks_path(current_user.id)
+            else
+                flash[:notice] = "Whole numbers only, please."
+                redirect_to user_stocks_path(current_user.id)
+            end
         else
             flash[:notice] = "Not enough money. This transaction will cost #{purchase_price - @user.balance} more than you have."
             redirect_to user_stocks_path(current_user.id)

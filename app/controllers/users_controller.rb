@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        # binding.pry
         @user = User.create(user_params)
         @user.balance = 5000.00
         @user.save
