@@ -13,8 +13,8 @@ class TransactionsController < ApplicationController
 
         if @user.balance > purchase_price
             @transaction = Transaction.create(transaction_params)
+            
             if @transaction.valid?
-                
                 @transaction.purchase_price = purchase_price
                 @transaction.purchase_date = DateTime.now
                 @transaction.save

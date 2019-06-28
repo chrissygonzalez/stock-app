@@ -1,15 +1,47 @@
 body {
-    background-color: #e6ddde;
+    background-color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: normal;
 }
 
 h1 {
-    font-family: 'Abel', serif;
-    font-weight: normal;
-    color: #db1d00;
-    line-height: 45px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    color: #000;
+    font-size: 24px;
 }
 
 header {
-    background-color: #000;
+    background-color: #7AAEDF;
+    padding: 20px;
+}
+
+header a {
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    color: #053E75;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    background-color: #EFF4F8;
+    padding: 15px 25px;
+}
+
+.logotype {
+    font-family: 'DM Sans', sans-serif;
+    display: inline;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 26px;
+    color: #fff;
     padding: 20px;
 }

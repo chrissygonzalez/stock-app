@@ -1,4 +1,5 @@
 <header>
+    <h2 class="logotype">StockItUp</h2>
     <% if signed_in? %> 
     <%=     link_to "Portfolio", user_stocks_path(current_user), class: 'button' %>
     <%=     link_to "Transactions", user_transactions_path(current_user), class: 'button' %>
