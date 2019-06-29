@@ -44,6 +44,20 @@ header a:hover {
     padding: 20px;
 }
 
+svg {
+    padding-bottom: 2px;
+}
+
+.header-nav {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.header-logout {
+    padding-right: 40px;
+    margin-top: 9px;
+}
+
 /* TABLES */
 
 table {
