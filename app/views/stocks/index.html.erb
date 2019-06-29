@@ -1,20 +1,22 @@
 <div class="flex-container">
-    <div>
-        <h1>Your Portfolio</h1>
-        <h3 class="balance">Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
+    <div class="portfolio-table">
+        <div class="flex-container">
+            <h1>Your Portfolio</h1>
+            <h3 class="balance">Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
+        </div>
 
         <% if @stocks.size > 0 %>
         <table>
         <tr>
-        <th>Ticker</th>
-        <th>Quantity</th>
-        <th>Current Value</th>
+        <th class="align-left">Ticker</th>
+        <th class="align-left">Quantity</th>
+        <th class="align-right">Current Value</th>
         </tr>
             <% @stock_quantities.each do |k, v| %>
             <tr>
             <td><%= k %></td>
             <td><%= v[0] %> shares</td>
-            <td><%= "%.2f" % (v[1] * v[0]) %> </td>
+            <td class="align-right"><%= "%.2f" % (v[1] * v[0]) %> </td>
             </tr>
             <% end %>
             </table>

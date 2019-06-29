@@ -4,19 +4,21 @@ body {
     font-weight: normal;
 }
 
+/* TYPOGRAPHY */
+
 h1 {
-    font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     color: #000;
     font-size: 24px;
 }
 
 h2 {
-    font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     color: #053E75;
     font-size: 18px;
 }
+
+/* HEADER */
 
 header {
     background-color: #7AAEDF;
@@ -25,7 +27,6 @@ header {
 
 header a {
     text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     color: #053E75;
 }
@@ -34,35 +35,7 @@ header a:hover {
     text-decoration: underline;
 }
 
-label {
-    display: block;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: normal;
-    margin-bottom: 10px;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-tr {
-    border-bottom: 4px solid #fff;
-}
-
-td {
-    background-color: #EFF4F8;
-    padding: 15px 25px;
-}
-
-.balance {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: normal;
-    font-size: 18px;
-    text-align: right;
-}
-
 .logotype {
-    font-family: 'DM Sans', sans-serif;
     display: inline;
     font-style: italic;
     font-weight: bold;
@@ -71,9 +44,52 @@ td {
     padding: 20px;
 }
 
+/* TABLES */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+tr {
+    border-bottom: 4px solid #fff;
+}
+
+th {
+    padding: 15px 25px;
+}
+
+td {
+    background-color: #EFF4F8;
+    padding: 15px 25px;
+}
+
+/* LAYOUT CONTAINERS */
+
 .flex-container {
     display: flex;
     justify-content: space-between;
+}
+
+/* PORTFOLIO */
+.balance {
+    font-weight: normal;
+    font-size: 18px;
+    text-align: right;
+}
+
+.portfolio-table {
+    flex-basis: 100%;
+    padding: 40px;
+}
+
+/* BUY STOCK FORM */
+
+label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 10px;
 }
 
 .stock-form {
@@ -101,7 +117,23 @@ input[type=submit] {
     width: 100%;
     box-shadow: 0 1px 2px 0 rgba(159,159,159,0.50);
     color: #053E75;
-    font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* ERROR BANNER */
+.notice {
+    background-color: #FDE9E9;
+    color: #E40000;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+/* UTILITY */
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
 }
