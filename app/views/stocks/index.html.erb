@@ -1,33 +1,43 @@
-<h1><%= @user.name %>'s Portfolio</h1>
-<h3>Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
+<div class="flex-container">
+    <div>
+        <h1>Your Portfolio</h1>
+        <h3 class="balance">Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
 
-<% if @stocks.size > 0 %>
-<table>
-<tr>
-<th>Ticker</th>
-<th>Quantity</th>
-<th>Current Value</th>
-</tr>
-    <% @stock_quantities.each do |k, v| %>
-    <tr>
-    <td><%= k %></td>
-    <td><%= v[0] %> shares</td>
-    <td><%= "%.2f" % (v[1] * v[0]) %> </td>
-    </tr>
-    <% end %>
-    </table>
-<% else %>
-<p>No stocks yet</p>
-<% end %>
+        <% if @stocks.size > 0 %>
+        <table>
+        <tr>
+        <th>Ticker</th>
+        <th>Quantity</th>
+        <th>Current Value</th>
+        </tr>
+            <% @stock_quantities.each do |k, v| %>
+            <tr>
+            <td><%= k %></td>
+            <td><%= v[0] %> shares</td>
+            <td><%= "%.2f" % (v[1] * v[0]) %> </td>
+            </tr>
+            <% end %>
+            </table>
+        <% else %>
+        <p>No stocks yet</p>
+        <% end %>
+    </div>
 
-<h2>Buy a Stock</h2>
- <%= form_for @transaction, :url => user_transactions_path(@user.id) do |f| %>
-    <%=     f.fields_for :stock do |st| %>
-    <%=         st.label "Ticker", class: "label" %>
-    <%=         st.text_field :symbol, class: "width-60" %><br>
-    <% end %>
-    <%=     f.label "Quantity", class: "label" %>
-    <%=     f.text_field :quantity, class: "width-60" %><br>
-    <%=     f.hidden_field :user_id, { :value => @user.id } %>
-    <%=     f.submit "Buy" %>
-<% end %>
+    <div class="stock-form">
+        <h2>Buy Stocks</h2>
+        <%= form_for @transaction, :url => user_transactions_path(@user.id) do |f| %>
+            <%=     f.fields_for :stock do |st| %>
+            <div class="stock-form-fields">
+            <%=         st.label "Ticker", class: "label" %>
+            <%=         st.text_field :symbol, class: "width-60" %>
+            </div>
+            <% end %>
+            <div class="stock-form-fields">
+            <%=     f.label "Quantity", class: "label" %>
+            <%=     f.text_field :quantity, class: "width-60" %>
+            </div>
+            <%=     f.hidden_field :user_id, { :value => @user.id } %>
+            <%=     f.submit "Buy" %>
+        <% end %>
+    </div>
+</div>

@@ -11,6 +11,13 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    color: #053E75;
+    font-size: 18px;
+}
+
 header {
     background-color: #7AAEDF;
     padding: 20px;
@@ -27,13 +34,31 @@ header a:hover {
     text-decoration: underline;
 }
 
+label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
 table {
     border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 4px solid #fff;
 }
 
 td {
     background-color: #EFF4F8;
     padding: 15px 25px;
+}
+
+.balance {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: right;
 }
 
 .logotype {
@@ -44,4 +69,39 @@ td {
     font-size: 26px;
     color: #fff;
     padding: 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stock-form {
+    background-color: #EFF4F8;
+    height: 100vh;
+    padding: 50px;
+    width: 400px;
+}
+
+.stock-form-fields {
+    margin-top: 20px;
+}
+
+input[type=text] {
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type=submit] {
+    background-color: #fff;
+    border: 2px solid #7C9AB7;
+    border-radius: 21px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgba(159,159,159,0.50);
+    color: #053E75;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
 }
