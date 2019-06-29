@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700,700i&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="<%= @signed_out ? 'blue-background' : '' %>">
     <%= render 'layouts/header' %>
     <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>

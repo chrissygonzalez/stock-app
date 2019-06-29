@@ -17,7 +17,13 @@
             <%= link_to "Log Out", logout_path, method: "delete", class: 'button' %>
         </div>
     <% else %>
-<%= link_to "Sign Up", new_user_path %>
-<%= link_to "Sign In", signin_path %>
+            <div class="header-nav">
+                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <%= link_to "Sign Up", new_user_path %>
+            </div>
+            <div class="header-nav">
+                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <%= link_to "Sign In", signin_path %>
+            </div>
     <% end %>
 </header>

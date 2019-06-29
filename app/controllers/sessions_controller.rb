@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    skip_before_action :require_signin, only: [:new, :create]
+
     def new
         @user = User.new
         @users = User.all
@@ -17,6 +19,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :user_id if session[:user_id]
-        redirect_to '/'
+        redirect_to signin_path
     end
 end

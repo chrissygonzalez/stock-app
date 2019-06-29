@@ -4,6 +4,10 @@ body {
     font-weight: normal;
 }
 
+.blue-background {
+    background-color: #7AAEDF;
+}
+
 /* TYPOGRAPHY */
 
 h1 {

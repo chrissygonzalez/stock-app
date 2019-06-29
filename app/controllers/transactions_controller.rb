@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        # TODO: display dollar signs and USD
+        # TODO: display dollar signs and USD, fix dates to be more readable
         @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
 
         if @user.balance > purchase_price
             @transaction = Transaction.create(transaction_params)
-            
+
             if @transaction.valid?
                 @transaction.purchase_price = purchase_price
                 @transaction.purchase_date = DateTime.now
