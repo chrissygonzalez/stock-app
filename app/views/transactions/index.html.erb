@@ -1,26 +1,28 @@
-<h1><%= @user.name %>'s Transactions</h1>
+<div class="transactions-table">
+    <h1>Your Transactions</h1>
 
-<% if @transactions.size > 0 %>
-<table>
-    <tr>
-        <th>Date</th>
-        <th>Ticker</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-    </tr>
-    <% @transactions.each do|txn| %>
-    <!-- NEED TO FILTER THESE FOR THE CURRENT USER -->
+    <% if @transactions.size > 0 %>
+    <table>
         <tr>
-            <td><%= txn.purchase_date %></td>
-            <td><%= Stock.find(txn.stock_id).symbol %>
-            <td><%= txn.quantity %> shares</td>
-            <td><%= txn.purchase_price %></td>
-            <td><%= txn.quantity * txn.purchase_price %></td>
+            <th class="align-left">Date</th>
+            <th class="align-left">Ticker</th>
+            <th class="align-left">Quantity</th>
+            <th class="align-right">Purchase price</th>
+            <th class="align-right">Total</th>
         </tr>
-    <% end %>
-</table>
+        <% @transactions.each do|txn| %>
+        <!-- NEED TO FILTER THESE FOR THE CURRENT USER -->
+            <tr>
+                <td><%= txn.purchase_date %></td>
+                <td><%= Stock.find(txn.stock_id).symbol %>
+                <td><%= txn.quantity %> shares</td>
+                <td class="align-right"><%= txn.purchase_price %></td>
+                <td class="align-right"><%= txn.quantity * txn.purchase_price %></td>
+            </tr>
+        <% end %>
+    </table>
 
-<% else %>
-    <p>No transactions yet</p>
-<% end %>
+    <% else %>
+        <p>No transactions yet</p>
+    <% end %>
+</div>

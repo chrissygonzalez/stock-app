@@ -64,6 +64,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
+    max-width: 1000px;
 }
 
 tr {
@@ -84,6 +85,11 @@ td {
 .flex-container {
     display: flex;
     justify-content: space-between;
+}
+
+/* TRANSACTIONS */
+.transactions-table {
+    padding: 40px;
 }
 
 /* PORTFOLIO */
@@ -150,4 +156,8 @@ input[type=submit] {
 
 .align-right {
     text-align: right;
+}
+
+.max-1000 {
+    max-width: 1000px;
 }
