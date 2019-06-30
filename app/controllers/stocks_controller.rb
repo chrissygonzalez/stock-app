@@ -9,16 +9,19 @@ class StocksController < ApplicationController
         @stock_quantities = Hash.new
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
 
-        # TODO: some of this prob needs to move into a separate function in the model
         @stocks.each do |stock|
             quantity = 0
             compared_to_open = ""
+            price = client.price(stock.symbol)
+            open_price = client.ohlc(stock[:symbol]).open.price
+
             @user.transactions.where(stock_id: stock.id).each do |txn|
                 quantity = quantity + txn.quantity
             end
-            if client.price(stock.symbol) > client.ohlc(stock[:symbol]).open.price
+
+            if price > open_price
                 compared_to_open = "up-since-open"
-            elsif client.price(stock.symbol) < client.ohlc(stock[:symbol]).open.price
+            elsif price < open_price
                 compared_to_open = "down-since-open"
             end
             @stock_quantities[stock.symbol] = [quantity, client.price(stock.symbol), compared_to_open]
