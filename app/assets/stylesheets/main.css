@@ -4,10 +4,6 @@ body {
     font-weight: normal;
 }
 
-.blue-background {
-    background-color: #7AAEDF;
-}
-
 /* TYPOGRAPHY */
 
 h1 {
@@ -17,6 +13,13 @@ h1 {
 }
 
 h2 {
+    font-weight: bold;
+    color: #053E75;
+    font-size: 21px;
+    text-align: center;
+}
+
+h3 {
     font-weight: bold;
     color: #053E75;
     font-size: 18px;
@@ -62,6 +65,15 @@ svg {
     margin-top: 9px;
 }
 
+/* SIGN IN FORM */
+.floating-form {
+    grid-column: 3 / 6;
+    background-color: #fff;
+    padding: 30px 50px;
+    margin-top: 40px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
 /* TABLES */
 
 table {
@@ -89,6 +101,11 @@ td {
 .flex-container {
     display: flex;
     justify-content: space-between;
+}
+
+.grid-container {
+    display: grid;  
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
 }
 
 /* TRANSACTIONS */
@@ -127,7 +144,8 @@ label {
     margin-top: 20px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password]{
     border: none;
     padding: 10px;
     width: 100%;
@@ -160,6 +178,14 @@ input[type=submit] {
 
 .align-right {
     text-align: right;
+}
+
+.blue-background {
+    background-color: #7AAEDF;
+}
+
+.light-blue {
+    background-color: #F0F8FF;
 }
 
 .max-1000 {
