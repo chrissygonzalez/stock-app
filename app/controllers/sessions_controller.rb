@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     end
       
     def create
-        @user = User.find_by(name: params[:user_name])
+        @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
             signin(@user)
             redirect_to user_stocks_path(@user.id)

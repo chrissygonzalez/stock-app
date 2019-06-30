@@ -1,14 +1,16 @@
 <div class="grid-container">
     <div class="floating-form">
-        <h2>Sign Up</h2>
+        <h2>Sign up for an account</h2>
             <%= form_for @user do |f| %>
                 <%=     f.label :name %>
                 <%=     f.text_field :name, class: "light-blue" %><br>
+                <%=     f.label :email %>
+                <%=     f.text_field :email, class: "light-blue" %><br>
                 <%=     f.label :password %>
                 <%=     f.text_field :password, class: "light-blue" %><br>
                 <%=     f.label :password_confirmation, 'Confirm password' %>
                 <%=     f.text_field :password_confirmation, class: "light-blue" %><br>
-                <%=     f.submit 'Create User' %>
+                <%=     f.submit 'Sign Up' %>
             <% end %>
     </div>
 </div>
