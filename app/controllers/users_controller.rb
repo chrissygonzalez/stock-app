@@ -7,11 +7,17 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        @user.balance = 5000.00
-        @user.save
-        signin(@user)
-        redirect_to user_stocks_path(@user.id)
+        @user = User.find_by(email: params[:email])
+        if @user
+            flash[:notice] = "An account with this email address already exists."
+            redirect_to new_user_path
+        else
+            @user = User.create(user_params)
+            @user.balance = 5000.00
+            @user.save
+            signin(@user)
+            redirect_to user_stocks_path(@user.id)
+        end
     end
 
     def show
