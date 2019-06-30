@@ -125,6 +125,14 @@ td {
     padding: 40px;
 }
 
+.up-since-open {
+    color: #2A9B38;
+}
+
+.down-since-open {
+    color: #E40000;
+}
+
 /* BUY STOCK FORM */
 
 label {

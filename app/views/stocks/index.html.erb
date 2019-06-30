@@ -14,9 +14,9 @@
         </tr>
             <% @stock_quantities.each do |k, v| %>
             <tr>
-            <td><%= k %></td>
+            <td class=<%= v[2]%>><%= k %></td>
             <td><%= v[0] %> shares</td>
-            <td class="align-right"><%= "%.2f" % (v[1] * v[0]) %> </td>
+            <td class="align-right <%= v[2]%>"><%= "%.2f" % (v[1] * v[0]) %> </td>
             </tr>
             <% end %>
             </table>
