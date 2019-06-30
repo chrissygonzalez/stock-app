@@ -8,23 +8,23 @@ class TransactionsController < ApplicationController
         @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
-        purchase_price = stock_price * params[:transaction][:quantity].to_i
+        total_price = stock_price * params[:transaction][:quantity].to_i
 
-        if @user.balance > purchase_price
+        if @user.balance > total_price
             @transaction = Transaction.create(transaction_params)
 
             if @transaction.valid?
-                @transaction.purchase_price = purchase_price
+                @transaction.purchase_price = stock_price
                 @transaction.purchase_date = DateTime.now
                 @transaction.save
-                @user.deduct_from_balance(purchase_price)
+                @user.deduct_from_balance(total_price)
                 redirect_to user_stocks_path(current_user.id)
             else
                 flash[:notice] = "Please enter a whole number of shares to purchase."
                 redirect_to user_stocks_path(current_user.id)
             end
         else
-            flash[:notice] = "Not enough money. This transaction will cost #{purchase_price - @user.balance} more than you have."
+            flash[:notice] = "Not enough money. This transaction will cost $#{(total_price - @user.balance).truncate(2)} more than you have."
             redirect_to user_stocks_path(current_user.id)
         end
     end

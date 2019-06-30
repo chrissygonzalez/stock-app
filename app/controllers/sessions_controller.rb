@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
             signin(@user)
             redirect_to user_stocks_path(@user.id)
         else
-            redirect_to new_user_path
+            flash[:notice] = "Either the email address or password are incorrect."
+            redirect_to signin_path
         end
     end
 

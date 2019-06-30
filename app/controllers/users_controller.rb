@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_by(email: params[:email])
+        @user = User.find_by(email: params[:user][:email])
+        # binding.pry
         if @user
             flash[:notice] = "An account with this email address already exists."
             redirect_to new_user_path
