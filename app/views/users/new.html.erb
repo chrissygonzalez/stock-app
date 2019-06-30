@@ -4,11 +4,11 @@
             <%= form_for @user do |f| %>
                 <%=     f.label :name %>
                 <%=     f.text_field :name, class: "light-blue" %><br>
-                <%=     f.label :email %>
+                <%=     f.label :email, class: "mt-20" %>
                 <%=     f.text_field :email, class: "light-blue" %><br>
-                <%=     f.label :password %>
+                <%=     f.label :password, class: "mt-20" %>
                 <%=     f.text_field :password, class: "light-blue" %><br>
-                <%=     f.label :password_confirmation, 'Confirm password' %>
+                <%=     f.label :password_confirmation, 'Confirm password', class: "mt-20" %>
                 <%=     f.text_field :password_confirmation, class: "light-blue" %><br>
                 <%=     f.submit 'Sign Up' %>
             <% end %>

@@ -5,7 +5,6 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        # TODO: display dollar signs and USD, fix dates to be more readable
         @user = current_user
         client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
@@ -21,7 +20,7 @@ class TransactionsController < ApplicationController
                 @user.deduct_from_balance(purchase_price)
                 redirect_to user_stocks_path(current_user.id)
             else
-                flash[:notice] = "Whole numbers only, please."
+                flash[:notice] = "Please enter a whole number of shares to purchase."
                 redirect_to user_stocks_path(current_user.id)
             end
         else

@@ -5,19 +5,18 @@
     <table>
         <tr>
             <th class="align-left">Date</th>
-            <th class="align-left">Ticker</th>
+            <th class="align-left">Ticker Symbol</th>
             <th class="align-left">Quantity</th>
             <th class="align-right">Purchase price</th>
-            <th class="align-right">Total</th>
+            <th class="align-right">Total price</th>
         </tr>
         <% @transactions.each do|txn| %>
-        <!-- NEED TO FILTER THESE FOR THE CURRENT USER -->
             <tr>
-                <td><%= txn.purchase_date %></td>
+                <td><%= txn.purchase_date.strftime("%b %d, %Y") %></td>
                 <td><%= Stock.find(txn.stock_id).symbol %>
                 <td><%= txn.quantity %> shares</td>
-                <td class="align-right"><%= txn.purchase_price %></td>
-                <td class="align-right"><%= txn.quantity * txn.purchase_price %></td>
+                <td class="align-right">$<%= txn.purchase_price %></td>
+                <td class="align-right">$<%= txn.quantity * txn.purchase_price %></td>
             </tr>
         <% end %>
     </table>

@@ -2,13 +2,13 @@
     <div class="portfolio-table">
         <div class="flex-container max-1000">
             <h1>Your Portfolio</h1>
-            <h3 class="balance">Balance: <%= "%.2f" % @user.balance.truncate(2) %></h3>
+            <h3 class="balance">Balance: $<%= "%.2f" % @user.balance.truncate(2) %> USD</h3>
         </div>
 
         <% if @stocks.size > 0 %>
         <table>
         <tr>
-        <th class="align-left">Ticker</th>
+        <th class="align-left">Ticker Symbol</th>
         <th class="align-left">Quantity</th>
         <th class="align-right">Current Value</th>
         </tr>
@@ -16,7 +16,7 @@
             <tr>
             <td class=<%= v[2]%>><%= k %></td>
             <td><%= v[0] %> shares</td>
-            <td class="align-right <%= v[2]%>"><%= "%.2f" % (v[1] * v[0]) %> </td>
+            <td class="align-right <%= v[2]%>">$<%= "%.2f" % (v[1] * v[0]) %> </td>
             </tr>
             <% end %>
             </table>
@@ -30,7 +30,7 @@
         <%= form_for @transaction, :url => user_transactions_path(@user.id) do |f| %>
             <%=     f.fields_for :stock do |st| %>
             <div class="stock-form-fields">
-            <%=         st.label "Ticker", class: "label" %>
+            <%=         st.label "Ticker Symbol", class: "label" %>
             <%=         st.text_field :symbol, class: "width-60" %>
             </div>
             <% end %>

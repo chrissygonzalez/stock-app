@@ -118,6 +118,7 @@ td {
     font-weight: normal;
     font-size: 18px;
     text-align: right;
+    color: #000;
 }
 
 .portfolio-table {
@@ -171,6 +172,10 @@ input[type=submit] {
     margin-top: 20px;
 }
 
+input[type=submit]:hover {
+    box-shadow: 0 2px 3px 0 rgba(109,108,108,0.50);
+}
+
 /* ERROR BANNER */
 .notice {
     background-color: #FDE9E9;
@@ -194,6 +199,10 @@ input[type=submit] {
 
 .light-blue {
     background-color: #F0F8FF;
+}
+
+.mt-20 {
+    margin-top: 20px;
 }
 
 .max-1000 {
