@@ -6,7 +6,9 @@ class TransactionsController < ApplicationController
 
     def create
         @user = current_user
-        client = IEX::Api::Client.new(publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'])
+        client = IEX::Api::Client.new(publishable_token: 'Tpk_681efd244ebe4cef8afeb7262957c2e1',
+        endpoint: 'https://sandbox.iexapis.com/v1')
+        # binding.pry
         stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
         total_price = stock_price * params[:transaction][:quantity].to_i
 

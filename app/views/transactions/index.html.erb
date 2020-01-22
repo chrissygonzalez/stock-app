@@ -15,8 +15,8 @@
                 <td><%= txn.purchase_date.strftime("%b %d, %Y") %></td>
                 <td><%= Stock.find(txn.stock_id).symbol %>
                 <td><%= txn.quantity %> shares</td>
-                <td class="align-right">$<%= txn.purchase_price %></td>
-                <td class="align-right">$<%= txn.quantity * txn.purchase_price %></td>
+                <td class="align-right">$<%= "%.2f" % (txn.purchase_price) %></td>
+                <td class="align-right">$<%= "%.2f" % (txn.quantity * txn.purchase_price) %></td>
             </tr>
         <% end %>
     </table>

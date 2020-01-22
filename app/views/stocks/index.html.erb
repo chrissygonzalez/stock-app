@@ -6,22 +6,22 @@
         </div>
 
         <% if @stocks.size > 0 %>
-        <table>
-        <tr>
-        <th class="align-left">Ticker Symbol</th>
-        <th class="align-left">Quantity</th>
-        <th class="align-right">Current Value</th>
-        </tr>
-            <% @stock_quantities.each do |k, v| %>
-            <tr>
-            <td class=<%= v[2]%>><%= k %></td>
-            <td><%= v[0] %> shares</td>
-            <td class="align-right <%= v[2]%>">$<%= "%.2f" % (v[1] * v[0]) %> </td>
-            </tr>
-            <% end %>
+            <table>
+                <tr>
+                    <th class="align-left">Ticker Symbol</th>
+                    <th class="align-left">Quantity</th>
+                    <th class="align-right">Current Value</th>
+                </tr>
+                <% @stock_data.each do |symbol, stock_data| %> <!-- stock_data: [quantity, price, compared_to_open, open_price] -->
+                <tr>
+                    <td class=<%= stock_data[2]%>><%= symbol %> Previous close: <%= "%.2f" % stock_data[3] %></td> 
+                    <td><%= pluralize(stock_data[0], 'share') %></td>
+                    <td class="align-right <%= stock_data[2]%>">$<%= "%.2f" % (stock_data[1] * stock_data[0]) %> </td>
+                </tr>
+                <% end %>
             </table>
         <% else %>
-        <p>No stocks yet</p>
+            <p>No stocks yet</p>
         <% end %>
     </div>
 
