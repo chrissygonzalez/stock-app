@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    require 'pry'
+    # require 'pry'
     require 'iex-ruby-client'
     include SessionsHelper
 
