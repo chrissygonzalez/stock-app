@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
                 redirect_to user_stocks_path(current_user.id)
             end
         else
-            flash[:notice] = "Not enough money. This transaction will cost $#{(total_price - @user.balance).truncate(2)} more than you have."
+            flash[:notice] = "Insufficient balance. This transaction will cost $#{(total_price - @user.balance).truncate(2)} more than you have."
             redirect_to user_stocks_path(current_user.id)
         end
     end

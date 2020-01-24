@@ -9,12 +9,14 @@
             <table>
                 <tr>
                     <th class="align-left">Ticker Symbol</th>
+                    <th class="align-left">Change</th>
                     <th class="align-left">Quantity</th>
                     <th class="align-right">Current Value</th>
                 </tr>
-                <% @stock_data.each do |symbol, stock_data| %> <!-- stock_data: [quantity, price, compared_to_open, open_price] -->
+                <% @stock_data.each do |symbol, stock_data| %> <!-- stock_data: [quantity, price, compared_to_open, change] -->
                 <tr>
-                    <td class=<%= stock_data[2]%>><%= symbol %> Previous close: <%= "%.2f" % stock_data[3] %></td> 
+                    <td class=<%= stock_data[2]%>><%= symbol %></td> 
+                    <td class="<%= stock_data[2]%>"><%= stock_data[3] %></td>
                     <td><%= pluralize(stock_data[0], 'share') %></td>
                     <td class="align-right <%= stock_data[2]%>">$<%= "%.2f" % (stock_data[1] * stock_data[0]) %> </td>
                 </tr>
