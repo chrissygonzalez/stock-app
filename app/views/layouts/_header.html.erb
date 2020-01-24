@@ -4,25 +4,25 @@
             <h2 class="logotype">StockItUp</h2>
             <% if signed_in? %> 
             <div class="header-nav">
-                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h8v8H0z" fill="#FFF" fill-rule="evenodd"/></svg>
                 <%= link_to "Portfolio", user_stocks_path(current_user), class: 'button' %>
             </div>
             <div class="header-nav">
-                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h8v8H0z" fill="#FFF" fill-rule="evenodd"/></svg>
                 <%= link_to "Transactions", user_transactions_path(current_user), class: 'button' %>
             </div>
         </div>
         <div class="header-logout">
-            <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+            <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h8v8H0z" fill="#FFF" fill-rule="evenodd"/></svg>
             <%= link_to "Log Out", logout_path, method: "delete", class: 'button' %>
         </div>
     <% else %>
             <div class="header-nav">
-                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h8v8H0z" fill="#FFF" fill-rule="evenodd"/></svg>
                 <%= link_to "Sign Up", new_user_path %>
             </div>
             <div class="header-nav">
-                <svg width="15" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M.429 7.55L7.5.48l7.071 7.07z" fill="#FFF" fill-rule="evenodd"/></svg>
+                <svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h8v8H0z" fill="#FFF" fill-rule="evenodd"/></svg>
                 <%= link_to "Sign In", signin_path %>
             </div>
     <% end %>

@@ -52,7 +52,8 @@ header a:hover {
 }
 
 svg {
-    padding-bottom: 2px;
+    margin-bottom: 2px;
+    margin-right: 3px;
 }
 
 .header-nav {
