@@ -3,6 +3,7 @@ class StocksController < ApplicationController
     end
 
     def index
+        # render json: {name: user_material.material.name, quantity: user_material.quantity}
         @user = current_user
         @stocks = User.find(current_user.id).stocks.uniq ||= nil
         @stock_data = Hash.new
@@ -32,6 +33,11 @@ class StocksController < ApplicationController
 
         @transaction = Transaction.new(user_id: current_user.id)
         @transaction.build_stock
+
+        respond_to do |format|
+            format.html { render :index }
+            format.json { render json: @stocks, status: 200 }
+        end
     end
 
     def create
