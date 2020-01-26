@@ -13,10 +13,12 @@ class StocksController < ApplicationController
         @stocks.each do |stock|
             quantity = 0
             compared_to_open = ""
-            price = client.quote(stock.symbol).latest_price
-            open_price = client.quote(stock.symbol).previous_close #using previous_close price from quote, since open not available
-            change = client.quote(stock.symbol).change
-            change_percent = client.quote(stock.symbol).change_percent_s
+            quote = client.quote(stock.symbol)
+
+            price = quote.latest_price
+            open_price = quote.previous_close # using previous_close price from quote, since open not available
+            change = quote.change
+            change_percent = quote.change_percent_s
 
 
             @user.transactions.where(stock_id: stock.id).each do |txn|
