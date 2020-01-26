@@ -13,14 +13,15 @@
                     <th class="align-left">Quantity</th>
                     <th class="align-right">Current Value</th>
                 </tr>
-                <% @stock_data.each do |symbol, stock_data| %> <!-- stock_data: [quantity, price, compared_to_open, change] -->
+                <% @stock_data.each do |symbol, stock_data| %>
                     <%= react_component("StockRow", {
                         style: stock_data[2],
                         symbol: symbol,
                         quantity: pluralize(stock_data[0], 'share'),
                         change: stock_data[3],
                         value: "%.2f" % (stock_data[1] * stock_data[0])
-                    }) %>
+                    },
+                    {tag: 'tr'}) %>
 
                 <% end %>
             </table>
