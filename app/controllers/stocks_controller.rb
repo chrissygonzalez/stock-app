@@ -12,21 +12,25 @@ class StocksController < ApplicationController
         @stocks.each do |stock|
             quantity = 0
             compared_to_open = ""
-            price = client.quote(stock.symbol).latest_price
-            open_price = client.quote(stock.symbol).previous_close #using previous_close price from quote, since open not available
-            change = client.quote(stock.symbol).change
-            change_percent = client.quote(stock.symbol).change_percent_s
+            quote = client.quote(stock.symbol)
 
+            price = quote.latest_price
+            open_price = quote.previous_close # using previous_close price from quote, since open not available
+            change = quote.change
+            change_percent = quote.change_percent_s
 
+            # summing up shares by stock
             @user.transactions.where(stock_id: stock.id).each do |txn|
                 quantity = quantity + txn.quantity
             end
 
+            # making text red or green
             if change > 0
                 compared_to_open = "up-since-open"
             elsif change < 0
                 compared_to_open = "down-since-open"
             end
+
             @stock_data[stock.symbol] = [quantity, price, compared_to_open, change_percent]
         end
 

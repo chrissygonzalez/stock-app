@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
         client = IEX::Api::Client.new(publishable_token: 'Tpk_681efd244ebe4cef8afeb7262957c2e1',
         endpoint: 'https://sandbox.iexapis.com/v1')
         # binding.pry
-        stock_price = client.price(params[:transaction][:stock_attributes][:symbol])
+        stock_price = client.quote(params[:transaction][:stock_attributes][:symbol]).latest_price
         total_price = stock_price * params[:transaction][:quantity].to_i
 
         if @user.balance > total_price
